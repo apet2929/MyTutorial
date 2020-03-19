@@ -1,4 +1,6 @@
 {
   "block.mytutorial.firstblock": "First Block",
-  "block.mytutorial.onmyown": "On My Own"
+  "block.mytutorial.onmyown": "On My Own",
+  "_comment": "Creative Tabs",
+  "itemGroup.mytutorial": "Tutorial"
 }

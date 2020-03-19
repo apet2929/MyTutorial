@@ -5,6 +5,7 @@ import com.MoonJew.mytutorial.blocks.ModBlocks;
 import com.MoonJew.mytutorial.blocks.OnMyOwn;
 import com.MoonJew.mytutorial.setup.ClientProxy;
 import com.MoonJew.mytutorial.setup.IProxy;
+import com.MoonJew.mytutorial.setup.ModSetup;
 import com.MoonJew.mytutorial.setup.ServerProxy;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
@@ -25,6 +26,7 @@ public class MyTutorial
 
     public static IProxy proxy = DistExecutor.runForDist(() -> () -> new ClientProxy(), () -> () -> new ServerProxy());
     // Directly reference a log4j logger.
+    public static ModSetup setup = new ModSetup();
     private static final Logger LOGGER = LogManager.getLogger();
 
     public MyTutorial() {
@@ -33,7 +35,8 @@ public class MyTutorial
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-
+        setup.init();
+        proxy.init();
     }
 
     // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
@@ -47,8 +50,10 @@ public class MyTutorial
         }
         @SubscribeEvent
         public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
-            event.getRegistry().register(new BlockItem(ModBlocks.FIRSTBLOCK, new Item.Properties()).setRegistryName("firstblock"));
-            event.getRegistry().register(new BlockItem(ModBlocks.ONMYOWN, new Item.Properties()).setRegistryName("onmyown"));
+            Item.Properties properties = new Item.Properties()
+                    .group(setup.itemGroup);
+            event.getRegistry().register(new BlockItem(ModBlocks.FIRSTBLOCK, properties).setRegistryName("firstblock"));
+            event.getRegistry().register(new BlockItem(ModBlocks.ONMYOWN, properties).setRegistryName("onmyown"));
 
 
         }
