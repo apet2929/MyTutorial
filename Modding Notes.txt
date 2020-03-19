@@ -31,22 +31,36 @@ WHEN DEBUGGING: Things to look out for
 
 
 How to make block, step by step
-1) Create block class inside (creatorname/modid/blocks)
-2) Register block in the mod class (com/creatorname/modid/modid.java) with a block and an item
-3) Instantiate a static block variable in the ModBlocks class (com/creatorname/modid/blocks/ModBlocks.java)
+    1) Create block class inside (creatorname/modid/blocks)
+    2) Register block in the mod class with a block and an item (com/creatorname/modid/modid.java)
+    3) Instantiate a static block variable in the ModBlocks class (com/creatorname/modid/blocks/ModBlocks.java)
 
-Now, here you can already access your block. Try it!
+    Now, here you can already access your block. Try it!
 
-4) Create a blockstates .json for the block named block registry name (resources/assets/modid/blockstates)
-5) Create another .json for the block named block unlocalized name (resources/assets/modid/models/block)
-6) Create a third and final .json for the block named block name (resources/assets/modid/models/item)
-7) Add the texture (resources/assets/modid/textures/block)
+    4) Create a blockstates .json for the block named block registry name (resources/assets/modid/blockstates)
+    5) Create a model for the block named block unlocalized name (resources/assets/modid/models/block)
+    6) Create a third and final .json for the block named block name (resources/assets/modid/models/item)
+    7) Add the texture (resources/assets/modid/textures/block)
 
-Now the block should have a texture. Test again.
+    Now the block should have a texture. Test again.
 
-8) Make a loot table so that it drops when destroyed (resources/data/modid/loot_tables/blocks)
-9) Set the displayed name in the language file (assets/modid/lang)
-10) Set the item recipe (resources/data/modid/recipes)
-11) Add it to the creative tab (com/creatorname/modid/modid.java)
+    8) Make a loot table so that it drops when destroyed (resources/data/modid/loot_tables/blocks)
+    9) Set the displayed name in the language file (assets/modid/lang)
+    10) Set the item recipe (resources/data/modid/recipes)
+    11) Add it to the creative tab (com/creatorname/modid/modid.java)
 
+How to make an item, step by step
+    1) Make the item class (creatorname/modid/items)
+    2) Register it in item registry (com/creatorname/modid/modid.java)
+    3) Register it in the ModItems class (com/creator/modid/items)
+
+    Now the item should now appear in game
+
+    4) Set the model (resources/assets/modid/models/item)
+    5) Add a texture
+    6) Add it in the language file
+
+    Now it should have a texture
+
+    7) Add a recipe
 

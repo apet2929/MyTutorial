@@ -3,6 +3,7 @@ package com.MoonJew.mytutorial;
 import com.MoonJew.mytutorial.blocks.FirstBlock;
 import com.MoonJew.mytutorial.blocks.ModBlocks;
 import com.MoonJew.mytutorial.blocks.OnMyOwn;
+import com.MoonJew.mytutorial.items.FirstItem;
 import com.MoonJew.mytutorial.setup.ClientProxy;
 import com.MoonJew.mytutorial.setup.IProxy;
 import com.MoonJew.mytutorial.setup.ModSetup;
@@ -54,6 +55,7 @@ public class MyTutorial
                     .group(setup.itemGroup);
             event.getRegistry().register(new BlockItem(ModBlocks.FIRSTBLOCK, properties).setRegistryName("firstblock"));
             event.getRegistry().register(new BlockItem(ModBlocks.ONMYOWN, properties).setRegistryName("onmyown"));
+            event.getRegistry().register(new FirstItem());
 
 
         }
