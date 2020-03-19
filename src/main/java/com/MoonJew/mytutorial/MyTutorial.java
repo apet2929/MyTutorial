@@ -1,6 +1,7 @@
 package com.MoonJew.mytutorial;
 
 import com.MoonJew.mytutorial.blocks.FirstBlock;
+import com.MoonJew.mytutorial.blocks.FirstBlockTile;
 import com.MoonJew.mytutorial.blocks.ModBlocks;
 import com.MoonJew.mytutorial.blocks.OnMyOwn;
 import com.MoonJew.mytutorial.items.FirstItem;
@@ -11,6 +12,7 @@ import com.MoonJew.mytutorial.setup.ServerProxy;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
@@ -58,6 +60,10 @@ public class MyTutorial
             event.getRegistry().register(new FirstItem());
 
 
+        }
+        @SubscribeEvent
+        public static void onTileEntityRegistry(final RegistryEvent.Register<TileEntityType<?>> event) {
+            event.getRegistry().register(TileEntityType.Builder.create(FirstBlockTile::new, ModBlocks.FIRSTBLOCK).build(null).setRegistryName("firstblock"));
         }
     }
 }

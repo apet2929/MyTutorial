@@ -28,10 +28,11 @@ WHEN DEBUGGING: Things to look out for
 -Trailing commas
 -Typos
 -Things named incorrectly
-
+-If texture isnt loading,
+    -In models and blockstates, make sure the directions are named the same thing, and that they line up
 
 How to make block, step by step
-    1) Create block class inside (creatorname/modid/blocks)
+    1) Create block class inside (com/creatorname/modid/blocks)
     2) Register block in the mod class with a block and an item (com/creatorname/modid/modid.java)
     3) Instantiate a static block variable in the ModBlocks class (com/creatorname/modid/blocks/ModBlocks.java)
 
@@ -63,4 +64,18 @@ How to make an item, step by step
     Now it should have a texture
 
     7) Add a recipe
+    8) Make a loot table
+    9) Set the displayed name
+    10) Add it to the creative tab
+
+How to make a tile entity for a block, step by step
+    1) Make a tile entity class for it (com/creatorname/modid/blocks)
+    2) Make a static variable for it in the ModBlocks class (com/creatorname/modid/blocks/ModBlocks.java)
+    3) Register it in the TileEntity registry in the mod class (com/creatorname/modid/modid.java)
+    4) Override hasTileEntity and createTileEntity in the block class (com/creatorname/modid/blocks)
+ADVANCED:
+    How to make a block face the direction a player is facing:
+        -Add methods onBlockPlacedBy, getFacingFromEntity, and fillStateContainer in the Block Class
+        -Only needed if the block has sides that are not all the same (blockstates isnt 1 line)
+
 
