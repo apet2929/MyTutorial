@@ -21,7 +21,7 @@ Folders required:
                             -textures
                                 -block
                                 -item
-                    -META-INF
+
 
 WHEN DEBUGGING: Things to look out for
 -Files are in the correct folders, folders are in the correct spot
@@ -58,7 +58,7 @@ How to make an item, step by step
     Now the item should now appear in game
 
     4) Set the model (resources/assets/modid/models/item)
-    5) Add a texture
+    5) Add a texture (resources/assets/modid/textures/item) Make sure the designated texture name is the same as the .png name for the texture
     6) Add it in the language file
 
     Now it should have a texture
@@ -73,6 +73,9 @@ How to make a tile entity for a block, step by step
     2) Make a static variable for it in the ModBlocks class (com/creatorname/modid/blocks/ModBlocks.java)
     3) Register it in the TileEntity registry in the mod class (com/creatorname/modid/modid.java)
     4) Override hasTileEntity and createTileEntity in the block class (com/creatorname/modid/blocks)
+
+How to make a food item, step by step
+    1) Make an item class
 ADVANCED:
     How to make a block face the direction a player is facing:
         -Add methods onBlockPlacedBy, getFacingFromEntity, and fillStateContainer in the Block Class

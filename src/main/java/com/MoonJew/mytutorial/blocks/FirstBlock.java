@@ -45,7 +45,7 @@ public class FirstBlock extends Block {
         }
     }
     public static Direction getFacingFromEntity(BlockPos clickedBlock, LivingEntity entity){
-        return Direction.getFacingFromVector((float)(entity.posX - clickedBlock.getX()), (float) (entity.posY - clickedBlock.getY()), (float) (entity.posZ - clickedBlock.getZ()));
+        return Direction.getFacingFromVector((float)(entity.getPosition().getX() - clickedBlock.getX()), (float) (entity.getPosition().getY() - clickedBlock.getY()), (float) (entity.getPosition().getY() - clickedBlock.getZ()));
     }
     @Override
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder){
