@@ -1,18 +1,18 @@
 package com.MoonJew.mytutorial;
 
-import com.MoonJew.mytutorial.blocks.FirstBlock;
-import com.MoonJew.mytutorial.blocks.FirstBlockTile;
-import com.MoonJew.mytutorial.blocks.ModBlocks;
-import com.MoonJew.mytutorial.blocks.OnMyOwn;
+import com.MoonJew.mytutorial.blocks.*;
 import com.MoonJew.mytutorial.items.FirstItem;
 import com.MoonJew.mytutorial.setup.ClientProxy;
 import com.MoonJew.mytutorial.setup.IProxy;
 import com.MoonJew.mytutorial.setup.ModSetup;
 import com.MoonJew.mytutorial.setup.ServerProxy;
 import net.minecraft.block.Block;
+import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntityType;
+import net.minecraft.util.math.BlockPos;
+import net.minecraftforge.common.extensions.IForgeContainerType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
@@ -27,6 +27,7 @@ import org.apache.logging.log4j.Logger;
 public class MyTutorial
 {
 
+    public static final String MODID = "MyTutorial";
     public static IProxy proxy = DistExecutor.runForDist(() -> () -> new ClientProxy(), () -> () -> new ServerProxy());
     // Directly reference a log4j logger.
     public static ModSetup setup = new ModSetup();
@@ -64,6 +65,19 @@ public class MyTutorial
         @SubscribeEvent
         public static void onTileEntityRegistry(final RegistryEvent.Register<TileEntityType<?>> event) {
             event.getRegistry().register(TileEntityType.Builder.create(FirstBlockTile::new, ModBlocks.FIRSTBLOCK).build(null).setRegistryName("firstblock"));
+        }
+
+
+        @SubscribeEvent
+        public static void onContainerRegistry(final RegistryEvent.Register<ContainerType<?>> event) {
+            event.getRegistry().register(
+                    IForgeContainerType.create(
+                            (windowId, inv, data) -> {
+                                BlockPos pos = data.readBlockPos();
+                                return new FirstBlockContainer(windowId, MyTutorial.proxy.getClientWorld(), pos, inv, proxy.getClientPlayer());
+                            }).setRegistryName("nutgrinder")
+            );
+
         }
     }
 }
