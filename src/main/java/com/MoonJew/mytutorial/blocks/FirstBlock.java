@@ -23,14 +23,9 @@ import net.minecraftforge.fml.network.NetworkHooks;
 
 import javax.annotation.Nullable;
 
-public class FirstBlock extends Block {
+public class FirstBlock extends TutorialBlock {
     public FirstBlock() {
-        super(Properties.create(Material.IRON)
-                .sound(SoundType.METAL)
-                .hardnessAndResistance(2.0f)
-                .lightValue(14)
-                );
-                setRegistryName("firstblock");
+        super("firstblock", Material.IRON, true);
     }
 
     @Override

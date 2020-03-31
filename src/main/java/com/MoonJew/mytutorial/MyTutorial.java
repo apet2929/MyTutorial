@@ -2,6 +2,8 @@ package com.MoonJew.mytutorial;
 
 import com.MoonJew.mytutorial.blocks.*;
 import com.MoonJew.mytutorial.items.FirstItem;
+import com.MoonJew.mytutorial.reg.ModBlocks;
+import com.MoonJew.mytutorial.reg.Register;
 import com.MoonJew.mytutorial.setup.ClientProxy;
 import com.MoonJew.mytutorial.setup.IProxy;
 import com.MoonJew.mytutorial.setup.ModSetup;
@@ -12,6 +14,7 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.math.BlockPos;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.extensions.IForgeContainerType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -27,7 +30,7 @@ import org.apache.logging.log4j.Logger;
 public class MyTutorial
 {
 
-    public static final String MODID = "MyTutorial";
+    public static final String MODID = "mytutorial";
     public static IProxy proxy = DistExecutor.runForDist(() -> () -> new ClientProxy(), () -> () -> new ServerProxy());
     // Directly reference a log4j logger.
     public static ModSetup setup = new ModSetup();
@@ -36,6 +39,9 @@ public class MyTutorial
     public MyTutorial() {
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+
+        Register.register();
+        MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
@@ -47,26 +53,11 @@ public class MyTutorial
     // Event bus for receiving Registry Events)
     @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistryEvents {
-        @SubscribeEvent
-        public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
-            event.getRegistry().register(new FirstBlock());
-            event.getRegistry().register(new OnMyOwn());
-        }
-        @SubscribeEvent
-        public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
-            Item.Properties properties = new Item.Properties()
-                    .group(setup.itemGroup);
-            event.getRegistry().register(new BlockItem(ModBlocks.FIRSTBLOCK, properties).setRegistryName("firstblock"));
-            event.getRegistry().register(new BlockItem(ModBlocks.ONMYOWN, properties).setRegistryName("onmyown"));
-            event.getRegistry().register(new FirstItem());
 
-
-        }
         @SubscribeEvent
         public static void onTileEntityRegistry(final RegistryEvent.Register<TileEntityType<?>> event) {
             event.getRegistry().register(TileEntityType.Builder.create(FirstBlockTile::new, ModBlocks.FIRSTBLOCK).build(null).setRegistryName("firstblock"));
         }
-
 
         @SubscribeEvent
         public static void onContainerRegistry(final RegistryEvent.Register<ContainerType<?>> event) {
@@ -75,7 +66,7 @@ public class MyTutorial
                             (windowId, inv, data) -> {
                                 BlockPos pos = data.readBlockPos();
                                 return new FirstBlockContainer(windowId, MyTutorial.proxy.getClientWorld(), pos, inv, proxy.getClientPlayer());
-                            }).setRegistryName("nutgrinder")
+                            }).setRegistryName("firstblock")
             );
 
         }

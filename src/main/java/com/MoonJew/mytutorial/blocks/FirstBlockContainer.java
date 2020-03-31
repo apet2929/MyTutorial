@@ -1,9 +1,11 @@
 package com.MoonJew.mytutorial.blocks;
 
 
+import com.MoonJew.mytutorial.reg.ModBlocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IWorldPosCallable;
 import net.minecraft.util.math.BlockPos;
@@ -13,7 +15,7 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import net.minecraftforge.items.wrapper.InvWrapper;
 
-import static com.MoonJew.mytutorial.blocks.ModBlocks.FIRSTBLOCK_CONTAINER;
+import static com.MoonJew.mytutorial.reg.ModBlocks.FIRSTBLOCK_CONTAINER;
 
 public class FirstBlockContainer extends Container {
 
@@ -35,6 +37,10 @@ public class FirstBlockContainer extends Container {
         System.out.println("Firstblock Container instantiated (FirstBlockContainer.java) (2/2)");
     }
 
+    @Override
+    public ContainerType<FirstBlockContainer> getType(){
+        return this.getType();
+    }
 
     @Override
     public boolean canInteractWith(PlayerEntity playerIn) {

@@ -1,6 +1,6 @@
 package com.MoonJew.mytutorial.setup;
 
-import com.MoonJew.mytutorial.blocks.ModBlocks;
+import com.MoonJew.mytutorial.reg.ModBlocks;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 

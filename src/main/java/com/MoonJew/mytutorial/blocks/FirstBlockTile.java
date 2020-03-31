@@ -23,7 +23,7 @@ import net.minecraftforge.items.ItemStackHandler;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import static com.MoonJew.mytutorial.blocks.ModBlocks.FIRSTBLOCK_TILE;
+import static com.MoonJew.mytutorial.reg.ModBlocks.FIRSTBLOCK_TILE;
 
 
 public class FirstBlockTile extends TileEntity implements ITickableTileEntity, INamedContainerProvider {

@@ -1,7 +1,7 @@
 package com.MoonJew.mytutorial.setup;
 
 import com.MoonJew.mytutorial.blocks.FirstBlockScreen;
-import com.MoonJew.mytutorial.blocks.ModBlocks;
+import com.MoonJew.mytutorial.reg.ModBlocks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.entity.player.PlayerEntity;
