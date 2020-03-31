@@ -25,7 +25,7 @@ public class FirstBlockContainer extends Container {
 
     public FirstBlockContainer(int windowId, World world, BlockPos pos, PlayerInventory playerInventory, PlayerEntity player) {
         super(FIRSTBLOCK_CONTAINER, windowId);
-        System.out.println("Firstblock Container instantiated (FirstBlockContainer.java) (1/2)");
+
         tileEntity = world.getTileEntity(pos);
         this.playerEntity = player;
         this.playerInventory = new InvWrapper(playerInventory);
@@ -34,12 +34,12 @@ public class FirstBlockContainer extends Container {
             addSlot(new SlotItemHandler(h, 0, 64, 24));
         });
         layoutPlayerInventorySlots(10, 70);
-        System.out.println("Firstblock Container instantiated (FirstBlockContainer.java) (2/2)");
+        System.out.println("Firstblock Container instantiated (FirstBlockContainer.java)");
     }
 
     @Override
     public ContainerType<FirstBlockContainer> getType(){
-        return this.getType();
+       return FIRSTBLOCK_CONTAINER;
     }
 
     @Override

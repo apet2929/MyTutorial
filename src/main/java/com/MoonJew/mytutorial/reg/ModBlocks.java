@@ -20,6 +20,7 @@ public class ModBlocks {
     public static TileEntityType<FirstBlockTile> FIRSTBLOCK_TILE;
     @ObjectHolder("mytutorial:onmyown")
     public static final OnMyOwn ONMYOWN = new OnMyOwn();
+    @ObjectHolder("mytutorial:firstblock")
     public static ContainerType<FirstBlockContainer> FIRSTBLOCK_CONTAINER;
 
 }
