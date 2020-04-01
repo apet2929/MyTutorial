@@ -1,5 +1,6 @@
 package com.MoonJew.mytutorial.blocks;
 
+import com.MoonJew.mytutorial.tools.CustomEnergyStorage;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
@@ -19,14 +20,17 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.network.NetworkHooks;
 
 import javax.annotation.Nullable;
 
 public class FirstBlock extends TutorialBlock {
+
     public FirstBlock() {
-        super("firstblock", Material.IRON, true);
+        super("firstblock", Material.IRON, 2.0f, ToolType.PICKAXE, 12, true);
     }
+
 
     @Override
     public boolean hasTileEntity(BlockState state) {
